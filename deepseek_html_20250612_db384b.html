@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play Crazy Plane - the most exciting online flight simulation game. Experience realistic physics and challenging missions in this browser-based adventure.">
+    <meta name="keywords" content="crazy plane, plane game, online flight game, airplane simulation, browser game, free plane game">
+    <link rel="canonical" href="https://plane.it.com/crazy-plane" />
+    
+    <!-- Apple-inspired color scheme -->
+    <meta name="theme-color" content="#147EFB">
+    
+    <title>Crazy Plane - Free Online Flight Simulation Game | plane.it.com</title>
+    
+    <!-- Tailwind-inspired CSS -->
+    <style>
+        :root {
+            --apple-blue: #147EFB;
+            --apple-light-gray: #F5F5F7;
+            --apple-dark-gray: #1D1D1F;
+            --apple-text-gray: #86868B;
+            --apple-green: #34C759;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--apple-light-gray);
+            color: var(--apple-dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--apple-dark-gray);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--apple-dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--apple-blue);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--apple-dark-gray);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--apple-text-gray);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .game-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+        }
+        
+        .game-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--apple-dark-gray);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--apple-text-gray);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature {
+            background-color: var(--apple-light-gray);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .feature h3 {
+            color: var(--apple-blue);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: var(--apple-dark-gray);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            color: var(--apple-text-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Game controls styling */
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .control-item {
+            background-color: var(--apple-light-gray);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .key {
+            background-color: var(--apple-dark-gray);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">plane.<span>it</span></a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/games">Games</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h1>Crazy Plane</h1>
+            <p class="tagline">Experience the ultimate flight adventure with realistic physics and challenging missions!</p>
+        </section>
+        
+        <section class="game-container">
+            <div class="game-wrapper">
+                <iframe src="https://html5.gamedistribution.com/rvvASMiM/fd8ad948b534420caced19c62764019f/index.html?gd_sdk_referrer_url=https%3A%2F%2Fwww.onlinegames.io%2Fcrazy-plane-landing%2F&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5vbmxpbmVnYW1lcy5pby9jcmF6eS1wbGFuZS1sYW5kaW5nLyIsInBhcmVudERvbWFpbiI6Im9ubGluZWdhbWVzLmlvIiwidG9wRG9tYWluIjoib25saW5lZ2FtZXMuaW8iLCJoYXNJbXByZXNzaW9uIjpmYWxzZSwibG9hZGVyRW5hYmxlZCI6dHJ1ZSwiaG9zdCI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidmVyc2lvbiI6IjEuNS4xNyJ9" allowfullscreen></iframe>
+            </div>
+            
+            <div class="controls">
+                <div class="control-item">
+                    <span class="key">W</span> / <span class="key">↑</span> Accelerate
+                </div>
+                <div class="control-item">
+                    <span class="key">S</span> / <span class="key">↓</span> Brake
+                </div>
+                <div class="control-item">
+                    <span class="key">A</span> / <span class="key">←</span> Left
+                </div>
+                <div class="control-item">
+                    <span class="key">D</span> / <span class="key">→</span> Right
+                </div>
+                <div class="control-item">
+                    <span class="key">Space</span> Shoot
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>About Crazy Plane</h2>
+            <p>Crazy Plane is an exhilarating online flight simulation game that puts you in control of a high-performance aircraft. Navigate through challenging environments, complete daring missions, and test your piloting skills in this action-packed adventure.</p>
+            <p>With realistic physics and intuitive controls, Crazy Plane offers an immersive experience for both casual players and flight simulation enthusiasts. The game features multiple levels of increasing difficulty, various aircraft to unlock, and stunning environments to explore.</p>
+        </section>
+        
+        <section class="content-section">
+            <h2>Game Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Realistic Physics</h3>
+                    <p>Experience authentic flight dynamics with our advanced physics engine that simulates real-world aerodynamics.</p>
+                </div>
+                <div class="feature">
+                    <h3>Multiple Aircraft</h3>
+                    <p>Unlock and pilot different planes, each with unique handling characteristics and performance specs.</p>
+                </div>
+                <div class="feature">
+                    <h3>Challenging Missions</h3>
+                    <p>Complete various objectives from precision landings to aerial combat scenarios and rescue operations.</p>
+                </div>
+                <div class="feature">
+                    <h3>Stunning Environments</h3>
+                    <p>Fly through diverse landscapes including cities, mountains, and islands with beautiful graphics.</p>
+                </div>
+                <div class="feature">
+                    <h3>Leaderboards</h3>
+                    <p>Compete with players worldwide and climb the rankings with your best scores and completion times.</p>
+                </div>
+                <div class="feature">
+                    <h3>Mobile Friendly</h3>
+                    <p>Play seamlessly on both desktop and mobile devices with optimized controls for each platform.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>How to Play</h2>
+            <p>Mastering Crazy Plane requires skill and precision. Here are some tips to get you started:</p>
+            <ul style="margin-left: 20px; margin-bottom: 20px; color: var(--apple-text-gray);">
+                <li style="margin-bottom: 8px;">Use gradual throttle adjustments for smooth takeoffs and landings</li>
+                <li style="margin-bottom: 8px;">Monitor your altitude carefully to avoid collisions with terrain</li>
+                <li style="margin-bottom: 8px;">Complete bonus objectives to earn extra points and unlock new aircraft</li>
+                <li style="margin-bottom: 8px;">Practice in the training mode before attempting difficult missions</li>
+                <li style="margin-bottom: 8px;">Watch your fuel gauge and plan your route efficiently</li>
+            </ul>
+            <p>The game saves your progress automatically, so you can pick up where you left off anytime.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/faq">FAQ</a>
+            </div>
+            <p class="copyright">© 2023 plane.it.com. All rights reserved. Crazy Plane is a trademark of plane.it.com</p>
+        </div>
+    </footer>
+</body>
+</html>
